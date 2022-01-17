@@ -85,4 +85,4 @@ const playMusic = (connection) => {
     connection.disconnect()
   })
 }
-client.login('OTMyNjY1ODU4NjIxMzA5MDA5.YeWSxA.ma4YxjQM_jb2hbUPBGbuJVsi4FU');
+client.login('');
