@@ -1,3 +1,4 @@
+require('dotenv').config();
 const { Client, Intents, MessageEmbed } = require('discord.js');
 const ytdl = require('ytdl-core');
 
@@ -47,9 +48,10 @@ client.on('messageCreate', message => {
       if(link == undefined || !link.startsWith("https://www.youtube.com/"))
         message.reply("Mauvais lien de video");
       else {
-          list.push(link);
+          links.push(link);
           message.reply("Video ajoute à la liste");
-          member.voice.channel.join().then(connection => {
+          console.log(member.voice.channel.joinable);
+          member.voice.channel.joinable.then(connection => {
             playMusic(connection);
             connection.on("disconnect", () => {
               links = [];
@@ -85,4 +87,5 @@ const playMusic = (connection) => {
     connection.disconnect()
   })
 }
-client.login('');
+
+client.login(process.env.KEY);
